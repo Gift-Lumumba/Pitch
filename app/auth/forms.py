@@ -3,6 +3,8 @@ from wtforms import StringField,PasswordField,SubmitField
 from wtforms.validators import Required,Email,EqualTo
 from ..models import User,Pitch,Comment,Update,Downvote
 from wtforms import ValidationError
+from wtforms import StringField,PasswordField,BooleanField,SubmitField
+
 
 class RegistrationForm(FlaskForm):
     email = StringField('Your Email Address',validators=[Required(),Email()])
