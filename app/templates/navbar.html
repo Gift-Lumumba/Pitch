@@ -16,6 +16,15 @@
               <li><a href=""></a>Interview pitch</li>
               <li><a href=""></a>Product pitch</li>
               <li><a href=""></a>Promotion pitch</li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if current_user.is_authenticated %}
+            <li style="color:white;padding:15px;">{{current_user.username}}</li>
+            <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+            {% else %}
+            <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+            {%endif%}
+          </ul>
       </div>
 
   </div>
