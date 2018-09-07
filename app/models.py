@@ -15,6 +15,10 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
+    the_pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
+    the_comment = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
+    the_upvotes = db.relationship('Upvote', backref = 'user', lazy = 'dynamic')
+    the_downvotes = db.relationship('Downvote', backref = 'user', lazy = 'dynamic')
 
     @property
     def password(self):
@@ -39,6 +43,9 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     category = db.Column(db.String(255))
     details = db.Column(db.String(255))
+    the_comment = db.relationship('Comment', backref = 'pitch', lazy = 'dynamic')
+    the_upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
+    the_downvotes = db.relationship('Downvote', backref = 'pitch', lazy = 'dynamic')
 
     def __repr__(self):
         return f'Pitch {self.details}'
