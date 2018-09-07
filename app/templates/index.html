@@ -1,50 +1,9 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  {% if title %}
-  <title> {{ title }}</title>
-  {% else %}
-  <title> Welcome to the best pitching website </title>
-  {% endif %}
-</head>
-<body>
-  <!-- Pitch section  -->
+{% block content %}
+
+  Pitch section 
   <h3> Make your Pitch</h3>
-  <ul>
-    {% for popular_movie in popular %}
-    <li>{{ popular_movie.title}}</li>
-    {% endfor %}
-  </ul>
-<!-- Styles block -->
+ 
 
-{% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
-  <!-- Content block -->
-  {% block content %}
-
-  <!-- Popular movie -->
-  <h3> Popular Movies</h3>
-  <ul>
-    {{ macro.displayMovieList(popular)}}
-  </ul>
-  <!-- Upcoming movie  -->
-  <h3> Upcoming Movies </h3>
-  <ul>
-    {{ macro.displayMovieList(upcoming)}}
-  </ul>
-  <!-- Now showing movie -->
-  <h3>Now Showing</h3>
-  <ul>
-    {{ macro.displayMovieList(now_showing)}}
-  </ul>
-  
-  
-  {% endblock%}
-</body>
-</html>
+{% endblock %} 

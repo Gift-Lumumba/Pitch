@@ -1,6 +1,5 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template
 from . import main
-from .forms import ReviewForm
 from flask_login import login_required
 
 # Views
@@ -10,13 +9,37 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Welcome to the best pitching website '
+    title = 'Welcome to the best pitching website'
     return render_template('index.html',title = title)
 
+# # @main.route('/pitchs/new/',methods =['GET','POST'])
+# # @login_required
+# # def new_pitch():
+# #     '''
+# #     View new pitches posted
 
-@main.route('/pitch/new/<int:id>', methods = ['GET','POST'])
-@login_required
-def new_pitch(id):
-    '''
-    View pitch page function that returns pitch details and data 
-    '''
+# #     '''
+
+
+# @main.route('/comments/new/<int:pitch_id>',methods = ['GET','POST'])
+# @login_required
+# def new_comment(pitch_id):
+#     '''
+#     View new comments by users
+#     '''
+
+
+# @main.route('/pitchs/upvote/<int:pitch_id>/upvote', methods = ['GET', 'POST'])
+# @login_required
+# def upvote(pitch_id):
+#     '''
+#     View pitch upvotes
+#     '''
+
+
+# @main.route('/pitchs/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
+# @login_required
+# def downvote(pitch_id):
+#     '''
+#     View pitch downvotes
+#     '''
