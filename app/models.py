@@ -67,3 +67,13 @@ class Upvote(db.Model):
         return f'Upvote {self.upvote}'
 
 
+class Downvote(db.Model):
+    __tablename__ = 'downvotes'
+
+    id = db.Column(db.Integer,primary_key = True)
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitchs.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    downvote = db.Column(db.Integer,default=1)
+
+    def __repr__(self):
+        return f'Downvote {self.downvote}'
