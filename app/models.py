@@ -30,3 +30,18 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+
+class Pitch(db.Model):
+    __tablename__ = 'pitchs'
+
+    id = db.Column(db.Integer,primary_key = True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    category = db.Column(db.String(255))
+    details = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f'Pitch {self.details}'
+
+
+
