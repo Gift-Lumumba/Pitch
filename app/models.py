@@ -44,4 +44,24 @@ class Pitch(db.Model):
         return f'Pitch {self.details}'
 
 
+class Comment(db.Model):
+    __tablename__ = 'comments'
 
+    id = db.Column(db.Integer,primary_key = True)
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitchs.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    information = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f'Comment {self.information}'
+
+# class Upvote(db.Model):
+#     __tablename__ = 'comments'
+
+#     id = db.Column(db.Integer,primary_key = True)
+#     pitch_id = db.Column(db.Integer,db.ForeignKey(pitchs.id))
+#     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+#     information = db.Column(db.String(255))
+
+#     def __repr__(self):
+#         return f'Comment {self.information}'
