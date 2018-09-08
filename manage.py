@@ -5,6 +5,8 @@ from app.models import User,Pitch,Comment,Upvote,Downvote
 
 # Creating app instance
 app = create_app('development')
+# app = create_app('production')
+
 
 
 migrate = Migrate(app,db)
