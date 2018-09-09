@@ -1,3 +1,4 @@
+## Application Specifications
 
 | Behaviour | Input | Output |
 | :---         |     :---:      |          ---: |
