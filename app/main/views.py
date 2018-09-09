@@ -67,6 +67,7 @@ def new_pitch():
 def category(id):
 
     category = PitchCategory.query.get(id)
+    category_name = PitchCategory.query.get(category_name)
 
     if category is None:
         abort(404)
@@ -91,7 +92,7 @@ def single_comment(id):
     if comment is None:
         abort(404)
     format_comment = markdown2.markdown(comment.pitch_comment,extras=["code-friendly", "fenced-code-blocks"])
-    return render_template('review.html',review = review,format_comment=format_comment)
+    return render_template('new_comment.html',review = review,format_comment=format_comment)
 
 
 @main.route('/view/comment/<int:id>')
