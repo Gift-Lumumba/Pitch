@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <p class="pickup">Pickup Lines :</p>
+    <br>
+    <br>
+    <a href="{{url_for('main.new_pitch')}}">
+
+        {{macro.displayPitchesInCategories(pitchs,1)}}
+        
+  </div>
+</div>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+    .pickup{
+      font-size: 25px;
+      font-family: 'Nunito Sans', sans-serif !important;
+      color: black;
+    }
+
+    .write{
+      font-size: 16.5px;
+      font-family: 'Nunito Sans', sans-serif !important;
+    }
+  </style>
+
+
+{% endblock %}
