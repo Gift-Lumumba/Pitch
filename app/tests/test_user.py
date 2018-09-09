@@ -27,3 +27,7 @@ class UserModelTest(unittest.TestCase):
 
     def test_password_verify(self):
         self.assertTrue(self.new_user.verify_password('gL0711'))
+
+
+if __name__ == '__main__':
+    unittest.main()
