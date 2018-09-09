@@ -1,9 +1,10 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from flask_login import login_required
-from ..models import User,Pitch,Comment,Upvote,Downvote
-from .forms import UpdateProfile
+from flask_login import login_required,current_user
+from ..models import User,Pitch,Category,Comment,Upvote,Downvote
+from .forms import UpdateProfile,CommentForm,PitchForm
 from .. import db,photos
+import markdown2
 
 # Views
 @main.route('/')
@@ -13,7 +14,96 @@ def index():
     View root page function that returns the index page and its data
     '''
     title = 'Welcome to the best pitching website'
-    return render_template('index.html',title = title)
+    pitchs = Pitch.get_all_pitches()
+    categories = Category.get_categories()
+    return render_template('index.html',title = title,pitchs = pitchs,categories = categories)
+
+#categories section
+@main.route('/pickup/pitchs')
+def pick_up():
+    pitchs = Pitch.get_all_pitches()
+    title = 'Pitch your pickup lines'
+    return render_template('pickup.html',title = title,pitchs = pitchs)
+
+@main.route('/interview/pitchs')
+def interview_pitch():
+    pitchs = Pitch.get_all_pitches()
+    title = 'Interview Pitches'
+    return render_template('interview.html',title = title,pitchs = pitchs)
+
+@main.route('/promotion/pitchs')
+def promotion_pitch():
+    pitchs = Pitch.get_all_pitches()
+    title = 'Promotion Pitches'
+    return render_template('promotion.html',title = title,pitchs = pitchs)
+
+@main.route('/product/pitchs')
+def product_pitch():
+    pitchs = Pitch.get_all_pitches()
+    title = 'Product Pitches'
+    return render_template('product.html',title = title,pitchs = pitchs)
+#end of categories section
+
+@main.route('/pitch/new/', methods = ['GET','POST'])
+@login_required
+def new_pitch():
+
+    form = PitchForm()
+    if category is None:
+        abort( 404 )
+
+    if form.validate_on_submit():
+        pitch= form.content.data
+        category_id = form.category_id.data
+        new_pitch= Pitch(pitch= pitch, category_id = category_id)
+
+        new_pitch.save_pitch()
+        return redirect(url_for('main.index'))
+
+    return render_template('new_pitch.html', new_pitch_form= form, category= category)
+
+
+@main.route('/category/<int:id>')
+def category(id):
+
+    category = PitchCategory.query.get(id)
+
+    if category is None:
+        abort(404)
+
+    pitches_in_category = Pitches.get_pitch(id)
+    return render_template('category.html' ,category= category, pitches= pitches_in_category)
+
+
+@main.route('/pitch/comments/new/<int:id>',methods = ['GET','POST'])
+@login_required
+def new_comment(id):
+    form = CommentForm()
+    if form.validate_on_submit():
+        new_comment = Comment(pitch_id =id,comment=form.comment.data,username=current_user.username)
+        new_comment.save_comment()
+        return redirect(url_for('main.index'))
+    return render_template('new_comment.html',comment_form=form)
+
+@main.route('/comments/<int:id>')
+def single_comment(id):
+    comment=Comment.query.get(id)
+    if comment is None:
+        abort(404)
+    format_comment = markdown2.markdown(comment.pitch_comment,extras=["code-friendly", "fenced-code-blocks"])
+    return render_template('review.html',review = review,format_comment=format_comment)
+
+
+@main.route('/view/comment/<int:id>')
+def view_comments(id):
+    '''
+    Function that shows the comments of a particular pitch
+    '''
+    comments = Comment.get_comments(id)
+    
+    return render_template('view_comments.html',comments = comments, id=id)
+
+
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -54,35 +144,3 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-
-# # @main.route('/pitchs/new/',methods =['GET','POST'])
-# # @login_required
-# # def new_pitch():
-# #     '''
-# #     View new pitches posted
-
-# #     '''
-
-
-# @main.route('/comments/new/<int:pitch_id>',methods = ['GET','POST'])
-# @login_required
-# def new_comment(pitch_id):
-#     '''
-#     View new comments by users
-#     '''
-
-
-# @main.route('/pitchs/upvote/<int:pitch_id>/upvote', methods = ['GET', 'POST'])
-# @login_required
-# def upvote(pitch_id):
-#     '''
-#     View pitch upvotes
-#     '''
-
-
-# @main.route('/pitchs/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
-# @login_required
-# def downvote(pitch_id):
-#     '''
-#     View pitch downvotes
-#     '''
