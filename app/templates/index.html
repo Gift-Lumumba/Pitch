@@ -1,9 +1,116 @@
+
 {% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
 
-  Pitch section 
-  <h3> Make your Pitch</h3>
- 
 
-{% endblock %} 
+<body>
+    <div class = "container main_page">
+        <div class="row">
+          
+          <p class="pitcher">Pitcher</p>
+          
+          
+          <div class="well">
+            <div>
+              <a href="{{url_for('main.new_pitch')}}">
+                <p class="title">Add New Pitch..</p>
+              </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="container">
+          <div class="well">
+              <div class="btn-group">
+                <button type="button" class="btn btn-md dropdown-toggle button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <p id="categoriess">Pitch Categories&nbsp; <span class="glyphicon glyphicon-chevron-down"></span></p>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{url_for('main.pick_up')}}" id="categories">1.Pickup Lines</a>
+                  <div class="dropdown-divider">
+                    <br>
+                    <a class="dropdown-item" href="{{url_for('main.interview_pitch')}}" id="categories">2.Interview Pitch</a>
+                  </div>
+                  &nbsp;
+                  <div class="dropdown-divider">
+                    <a class="dropdown-item" href="{{url_for('main.promotion_pitch')}}" id="categories">3.Promotion Pitch</a>
+                  </div>
+                  &nbsp;
+                  <div class="dropdown-divider">
+                    <a class="dropdown-item" href="{{url_for('main.product_pitch')}}" id="categories">4.Product Pitch</a>
+                  </div>
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <div class="container">
+                    <p class="latest"><b>Latest Pitches</b></p>
+                    <div class="thumbnail pitches">
+                      <p class="pitches">{{macro.displayPitches(pitchs)}}</p>
+                    </div>
+            </div>
+      </div>
+      
+
+</body>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+  #categories{
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size: 16px;
+  }
+  #categoriess{
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size: 17px;
+
+  }
+  .title{
+    font-size: 20px;
+  }
+  .latest{
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size: 25px;
+    text-decoration-line: underline;
+    color: black;
+  }
+  .pitches{
+    font-family: 'Nunito Sans', sans-serif !important;
+    color: black;
+    font-size: 16px;
+  }
+  .pitcher{
+    color: black;
+    font-size: 37px !important;
+  }
+  .button{
+    border: solid green !important;
+    height: 40px !important;
+    background:  rgb(26, 25, 25);
+    font-size: 16.5px;
+    color: whitesmoke !important;
+  }
+  .button:hover{
+    color: green !important;
+  }
+</style>
+
+{% endblock %}
