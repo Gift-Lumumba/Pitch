@@ -53,9 +53,9 @@ def new_pitch():
         abort( 404 )
 
     if form.validate_on_submit():
-        pitch= form.content.data
-        category_id = form.category_id.data
-        new_pitch= Pitch(pitch= pitch, category_id = categories.id)
+        pitch= form.content.data, form.category_id.data
+        # category_id = form.category_id.data
+        new_pitch= Pitch(pitch= pitch)
 
         new_pitch.save_pitch()
         return redirect(url_for('main.index'))
