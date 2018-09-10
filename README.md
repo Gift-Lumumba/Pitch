@@ -1,10 +1,12 @@
 # Pitcher
+https://pitch-app.herokuapp.com/
 This is a web application that enables users submit pitches per different categories.This application was created on 9th September 2018
 
 # Author
 Gift Lumumba
 
 ## Link to Deployed Site on Heroku
+https://pitch-app.herokuapp.com/
 
 ## Description
 This is an application that allows users submit their pitches per category(Pickup lines,Interview pitches,Promotion pitches and Product pitches).Other users will vote on them and leave comments to give their feedback on them.
