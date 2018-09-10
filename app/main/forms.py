@@ -9,7 +9,7 @@ class UpdateProfile(FlaskForm):
 
 
 class PitchForm(FlaskForm):
-    category_id = SelectField('Select Category :', choices=[('Pickup_Lines', 'Pickup Lines'),('Interview_Pitch','Interview Pitch'),('Promotion_Pitch','Promotion Pitch'),('Product_Pitch','Product Pitch')])
+    category_id = SelectField('Select Category :', choices=[('Pickup Lines', 'Pickup Lines'),('Interview Pitch','Interview Pitch'),('Promotion Pitch','Promotion Pitch'),('Product Pitch','Product Pitch')])
     content = TextAreaField('Write your pitch here :')
     submit = SubmitField('Add Pitch')
 
