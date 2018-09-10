@@ -56,6 +56,7 @@ def new_pitch():
         pitch= form.content.data, form.category_id.data
         # category_id = form.category_id.data
         new_pitch= Pitch(pitch= pitch)
+    
 
         new_pitch.save_pitch()
         return redirect(url_for('main.index'))
