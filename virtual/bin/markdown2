@@ -1,4 +1,4 @@
-#!/home/gift/Documents/Moringa-Core/Python/IPs/Pitch/virtual/bin/python
+#!/home/gift/Documents/Moringa-Core/Python/IPs/Pitch/virtual/bin/python3.6
 
 import sys
 from os.path import join, dirname, exists
