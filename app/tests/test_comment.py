@@ -1,5 +1,6 @@
 import unittest
 from app.models import Comment,Pitch, User
+from app import db
 
 class CommentTest(unittest.TestCase):
 

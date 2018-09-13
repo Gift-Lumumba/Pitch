@@ -5,7 +5,7 @@ from app.models import User,Pitch,Comment,Upvote,Downvote
 
 # Creating app instance
 app = create_app('production')
-# app = create_app('test')
+app = create_app('test')
 
 
 
