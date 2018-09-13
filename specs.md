@@ -14,4 +14,4 @@
 | `Button:Upload profile photo`     | `Click on the Choose file button`       | `Select picture from Pictures directory of your computer to put as profile picture` |
 | `Button:Submit`     | `Click on the Submit button`       | `Added profile picture is displayed` |
 | `Edit Profile`     | `Click on the 'Edit your profile' link below the submit button`       | `Redirected back to profile update page where you can update your bio` |
-| `Log out`     | `Click on the Log out link at the far right side of the navbar`       | `Redirected back to the login` |
+| `Log out`     | `Click on the Log out link at the far right side of the navbar`       | `Redirected back to the login` | 
