@@ -1,22 +1,30 @@
 {% extends 'base.html'%}
 
 {% block content %}
+<body>
+    <div class="container">
+        <div class="thumbnail">
+            <p class="others">Other comments:</p>
+            <ol>
+            {% for item in comments %}
+            <li>
+                <p class="comment"><b>{{item.comment}}</b></p>
+                <p class="usernames">Comment by: {{item.username}}</p>
+            </li>
+        {% endfor %}
+        </div>
+</body>
 
-<div class="container">
-  <div class="thumbnail">
-      <p class="others">Other comments:</p>
-      <ol>
-      {% for item in comments %}
-      <li>
-          <p class="comment"><b>{{item.comment}}</b></p>
-          <p class="usernames">Comment by: {{item.username}}</p>
-      </li>
-  {% endfor %}
-  </div>
 
 <style>
   @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
-
+  body{
+    background: url(/static/photos/pitch.jpeg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
   .others{
     font-size: 25px;
     font-family: 'Nunito Sans', sans-serif !important;

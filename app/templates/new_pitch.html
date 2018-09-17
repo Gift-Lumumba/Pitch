@@ -3,7 +3,8 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content%}
-<div class="container">
+<body>
+    <div class="container">
         <div class="well">
                 <p class="new">Write a new pitch...</p>
                 <br>
@@ -13,10 +14,17 @@
         
         </div>
 </div>
+</body>
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
-
+    body{
+    background: url(/static/photos/pitch.jpeg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
     .new{
       font-size: 26px;
       font-family: 'Nunito Sans', sans-serif !important;
