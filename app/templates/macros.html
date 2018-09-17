@@ -1,6 +1,9 @@
 {% macro displayPitches(pitches_list) %}
 
     {% for pitch in pitches_list %}
+    <br>
+    <br>
+    <br>
       <div class="thumbnail">
           <p>{{pitch.pitch}}</p>
           <p>{{pitch.category}}</p>
@@ -13,9 +16,14 @@
 {% endmacro %}
 
 <!-- Displaying comments macro -->
+<br>
+<br>
+<br>
 {% macro displayComments(list_of_comments) %}
 {% for comment in list_of_comments  %}
 <div class="row">
+  <br>
+  <br>
 
           <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
             <h4>Pitch Author</h4>
@@ -28,8 +36,12 @@
 
 {% endfor %}
 {% endmacro %}
+<br>
+<br>
 
 {% macro displayPitchesInCategories(pitches,id)%}
+<br>
+<br>
   {% for pitch in pitches %}
     {% if pitch.category_id==id%}
         <div class="well well"style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px;">
